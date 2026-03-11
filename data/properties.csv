@@ -1,0 +1,11 @@
+id,name,type,location,city,price,bedrooms,bathrooms,area_sqft,amenities,status,description,image_url
+P001,Sunrise Villa,Villa,Banjara Hills,Hyderabad,15000000,4,3,3200,"Swimming Pool, Gym, Garden, Parking",Available,"Luxurious villa with panoramic views and modern interiors",""
+P002,Green Park Apartment,Apartment,Gachibowli,Hyderabad,6500000,3,2,1450,"Gym, Parking, Security, Club House",Available,"Premium 3BHK in tech hub with all modern amenities",""
+P003,City Heights Studio,Studio,HITEC City,Hyderabad,3200000,1,1,650,"Parking, Security, Lift",Available,"Cozy studio apartment ideal for working professionals",""
+P004,Royal Residency,Apartment,Jubilee Hills,Hyderabad,9800000,4,3,2100,"Swimming Pool, Gym, Club House, Parking, Garden",Available,"Spacious 4BHK in elite locality with world-class facilities",""
+P005,Skyline Towers,Apartment,Madhapur,Hyderabad,5500000,2,2,1100,"Gym, Parking, Power Backup, Security",Available,"Modern 2BHK with stunning city skyline views",""
+P006,Palm Grove Villa,Villa,Kompally,Hyderabad,22000000,5,4,4500,"Swimming Pool, Gym, Garden, Parking, Home Theater",Available,"Grand villa with landscaped gardens and smart home features",""
+P007,Metro Edge Flat,Apartment,Kukatpally,Hyderabad,4200000,2,1,950,"Parking, Security, Lift, Power Backup",Available,"Affordable 2BHK near metro station with good connectivity",""
+P008,Serene Meadows,Plot,Shamshabad,Hyderabad,2800000,0,0,2400,"Gated Community, Security, Roads",Available,"Residential plot in gated community near airport",""
+P009,Business Bay Office,Commercial,Financial District,Hyderabad,18000000,0,2,3000,"Parking, 24x7 Security, Cafeteria, Conference Rooms",Available,"Premium office space in prime commercial zone",""
+P010,Lakeview Cottage,Villa,Shamirpet,Hyderabad,8500000,3,2,1800,"Garden, Parking, Lake View",Available,"Peaceful villa with natural lake views perfect for weekend home",""
