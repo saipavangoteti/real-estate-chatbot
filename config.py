@@ -16,8 +16,8 @@ LEADS_CSV      = os.path.join(os.path.dirname(__file__), "data", "leads.csv")
 # ─── App Settings ────────────────────────────────────────────────────────────
 APP_TITLE       = os.getenv("APP_TITLE", "LuxeEstate AI Assistant")
 COMPANY_NAME    = os.getenv("COMPANY_NAME", "LuxeEstate Realty")
-COMPANY_PHONE   = os.getenv("COMPANY_PHONE", "+91-9876543210")
-COMPANY_EMAIL   = os.getenv("COMPANY_EMAIL", "info@luxeestate.com")
+COMPANY_PHONE   = os.getenv("COMPANY_PHONE", "YOUR_PHONE_NUMBER")
+COMPANY_EMAIL   = os.getenv("COMPANY_EMAIL", "your_email@example.com")
 COMPANY_WEBSITE = os.getenv("COMPANY_WEBSITE", "https://luxeestate.com")
 
 # ─── Chatbot Persona ─────────────────────────────────────────────────────────

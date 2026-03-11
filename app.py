@@ -647,8 +647,8 @@ GROQ_MODEL=llama-3.3-70b-versatile
 APP_TITLE=LuxeEstate AI Assistant
 COMPANY_NAME=LuxeEstate Realty
 AGENT_NAME=Aria
-COMPANY_PHONE=+91-9876543210
-COMPANY_EMAIL=info@luxeestate.com
+COMPANY_PHONE=YOUR_PHONE_NUMBER
+COMPANY_EMAIL=your_email@example.com
 COMPANY_WEBSITE=https://luxeestate.com
             """, language="bash")
 
