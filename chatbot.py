@@ -1,25 +1,16 @@
-from langchain_groq import ChatGroq
-from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-from langchain_core.messages import HumanMessage, AIMessage
-
+import groq
 from config import GROQ_API_KEY, GROQ_MODEL, SYSTEM_PROMPT
 
 
 def build_agent():
-    """Build and return a simple LLM instance."""
+    """Build and return a Groq client."""
     
-    llm = ChatGroq(
-        api_key=GROQ_API_KEY,
-        model=GROQ_MODEL,
-        temperature=0.3,
-        max_tokens=2048,
-    )
-
-    return llm
+    client = groq.Groq(api_key=GROQ_API_KEY)
+    return client
 
 
-def get_response(llm, user_input: str, chat_history: list) -> str:
-    """Get a response from the LLM."""
+def get_response(client, user_input: str, chat_history: list) -> str:
+    """Get a response from the Groq API directly."""
     
     # Build conversation history
     messages = [
@@ -40,8 +31,13 @@ def get_response(llm, user_input: str, chat_history: list) -> str:
     })
 
     try:
-        # Use direct LLM invocation
-        response = llm.invoke(messages)
-        return response.content
+        # Use direct Groq API call
+        response = client.chat.completions.create(
+            model=GROQ_MODEL,
+            messages=messages,
+            temperature=0.3,
+            max_tokens=2048,
+        )
+        return response.choices[0].message.content
     except Exception as e:
         return f"I apologize, but I encountered an error: {str(e)}. Please try rephrasing your question."
