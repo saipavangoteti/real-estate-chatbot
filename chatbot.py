@@ -35,7 +35,6 @@ def build_agent() -> AgentExecutor:
         max_iterations=5,
         handle_parsing_errors=True,
         return_intermediate_steps=False,
-        llm=llm,
     )
 
     return agent_executor
