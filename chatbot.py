@@ -1,15 +1,12 @@
 from langchain_groq import ChatGroq
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
-from langchain.chains import LLMChain
-from langchain.memory import ConversationBufferMemory
+from langchain_core.messages import HumanMessage, AIMessage
 
 from config import GROQ_API_KEY, GROQ_MODEL, SYSTEM_PROMPT
-from utils.tools import REAL_ESTATE_TOOLS
 
 
 def build_agent():
-    """Build and return a simple LLM with tools."""
+    """Build and return a simple LLM instance."""
     
     llm = ChatGroq(
         api_key=GROQ_API_KEY,
@@ -18,34 +15,33 @@ def build_agent():
         max_tokens=2048,
     )
 
-    # Create a simple prompt template
-    prompt = ChatPromptTemplate.from_messages([
-        ("system", SYSTEM_PROMPT + "\n\nAvailable tools: " + str([tool.name for tool in REAL_ESTATE_TOOLS])),
-        MessagesPlaceholder(variable_name="chat_history"),
-        ("human", "{input}"),
-    ])
+    return llm
 
-    # Create a simple chain
-    chain = LLMChain(llm=llm, prompt=prompt)
+
+def get_response(llm, user_input: str, chat_history: list) -> str:
+    """Get a response from the LLM."""
     
-    return chain
-
-
-def get_response(chain, user_input: str, chat_history: list) -> str:
-    """Get a response from the agent."""
-    # Convert history to LangChain message format
-    history_str = ""
+    # Build conversation history
+    messages = [
+        {"role": "system", "content": SYSTEM_PROMPT}
+    ]
+    
+    # Add chat history
     for msg in chat_history:
-        if msg["role"] == "user":
-            history_str += f"User: {msg['content']}\n"
-        elif msg["role"] == "assistant":
-            history_str += f"Assistant: {msg['content']}\n"
+        messages.append({
+            "role": msg["role"],
+            "content": msg["content"]
+        })
+    
+    # Add current user input
+    messages.append({
+        "role": "user", 
+        "content": user_input
+    })
 
     try:
-        result = chain.run(
-            input=user_input,
-            chat_history=history_str
-        )
-        return result
+        # Use direct LLM invocation
+        response = llm.invoke(messages)
+        return response.content
     except Exception as e:
         return f"I apologize, but I encountered an error: {str(e)}. Please try rephrasing your question."
