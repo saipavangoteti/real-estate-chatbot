@@ -1,6 +1,5 @@
 from langchain_groq import ChatGroq
-from langchain.agents import AgentExecutor
-from langchain.agents.agent_toolkits import create_tool_calling_agent
+from langchain.agents import AgentExecutor, create_tool_calling_agent
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.messages import HumanMessage, AIMessage
 from langchain.memory import ConversationBufferWindowMemory
@@ -9,8 +8,8 @@ from config import GROQ_API_KEY, GROQ_MODEL, SYSTEM_PROMPT
 from utils.tools import REAL_ESTATE_TOOLS
 
 
-def build_agent() -> AgentExecutor:
-    """Build and return the LangChain ReAct agent."""
+def build_agent():
+    """Build and return the LangChain agent."""
 
     llm = ChatGroq(
         api_key=GROQ_API_KEY,
@@ -40,7 +39,7 @@ def build_agent() -> AgentExecutor:
     return agent_executor
 
 
-def get_response(agent: AgentExecutor, user_input: str, chat_history: list) -> str:
+def get_response(agent, user_input: str, chat_history: list) -> str:
     """Get a response from the agent."""
     # Convert history to LangChain message format
     lc_history = []
